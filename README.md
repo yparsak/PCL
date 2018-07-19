@@ -9,7 +9,7 @@ PCL barcode 3of9 code generation using C++
 lpadmin -p printer_name -E -v socket://printer_host:port -m raw
 ```
 
-* See barcode_test.cpp. It prints TITLE and two barcodes that print "1", one without human readable text, and second with human readable text under the barccode.
+* See barcode_test.cpp. It prints TITLE and two barcodes that print "1", one without human readable text, and second with human readable text under the barcode.
 * You may have to re-program the scanner, if you are scanning only one character in the barcode.
 
 ```
