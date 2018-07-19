@@ -95,13 +95,17 @@ void PCL::DisablePrintBarcodeText() {
 void PCL::MoveH(float h) {
   ostringstream Hpos;
   Hpos << h;
-  Text(Esc("&a+"+Hpos.str()+"H"));
+  string sign = "";
+  if (h>=0) sign = "+";
+  Text(Esc("&a"+sign+Hpos.str()+"H"));
 }
 
 void PCL::MoveV(float v) {
   ostringstream Vpos;
   Vpos << v;
-  Text(Esc("&a+"+Vpos.str()+"V"));
+  string sign = "";
+  if (v>=0) sign = "+";
+  Text(Esc("&a"+sign+Vpos.str()+"V"));
 }
 
 void PCL::DrawRectangle(float H, float V, int is_space) {
