@@ -6,7 +6,7 @@ Create a PCL code and print text and barcode 39. See example: barcode_test.cpp. 
 See: https://en.wikipedia.org/wiki/Code_39 for more info.
 
 Notes:
-* You may have to modify library path /url/lib/ in the Makefile
+* You may have to modify library path /usr/lib/ in the Makefile
 * The printer should be set as 'raw' type
 
 ```
