@@ -218,10 +218,12 @@ void PCL::print_char(char chr) {
 
   if (print_barcode_text) {
     Pop();
+    // write human readable text
     MoveV(barcode_height + PCL_TEXT_MARGIN);
     Text(chr_str);
     Pop();
-    MoveH(160 * barcode_width_ratio);
+    // move to the next char
+    MoveH((bar_width_bit_cnt+1) * PCL_WIDE_BAR * barcode_width_ratio);
   }
 
 }
@@ -234,6 +236,7 @@ void   PCL::createFile(string name, string content) {
 
 void  PCL::Barcode39(string value) {
 
+  //Remove * char, and append it as prefix and suffix
   value = "*" + RemoveChar(value,'*') + "*";
 
   // Vertical Center On
