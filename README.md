@@ -1,16 +1,18 @@
 # PCL
-PCL barcode 3of9 code generation using C++
+PCL barcode 3of9 code generation using C++.
 
+Create a PCL code and print text and barcode 39. See example: barcode_test.cpp. It prints text "TITLE" and two barcodes. The second barcode includes human redable text under the barcode.
 
-* You may have to modify library path in the Makefile
+See: https://en.wikipedia.org/wiki/Code_39 for more info.
+
+Notes:
+* You may have to modify library path /url/lib/ in the Makefile
 * The printer should be set as 'raw' type
 
 ```
 lpadmin -p printer_name -E -v socket://printer_host:port -m raw
 ```
-
-* See barcode_test.cpp. It prints TITLE and two barcodes that print "1", one without human readable text, and second with human readable text under the barcode.
-* You may have to re-program the scanner, if you are scanning only one character in the barcode.
+* Some scanners don't scan single character barcodes. If you are printing a single character barcode, you may have to re-program your scanner.
 
 ```
 -->make
@@ -38,3 +40,5 @@ hexdump -C test
 
 -->lpr -P PRINTER_NAME test
 ```
+
+TODO: Write a new function that you can pass file path as a parameter. Use "convert" to convert image to pcl code. Then using this function read file contents as binary, remove Reset command '1b 45  |^E|' from the image file, and insert image data into the pcl code. This will allow printing images.
