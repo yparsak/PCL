@@ -5,7 +5,7 @@ PCL barcode 3of9 code generation using C++
 * You may have to modify library path in the Makefile
 * See barcode_test.cpp. It prints TITLE and two barcodes that print "1", one without human readable text, and second with human readable text.
 
-
+```
 -->make
 g++ -fPIC -c pcl.cpp -o pcl.o 
 g++ -shared  -Wl,-soname,libpcl.so -o libpcl.so pcl.o 
@@ -29,5 +29,5 @@ hexdump -C test
 000005f0  2b 31 38 37 2e 35 56 1b  45                       |+187.5V.E|
 000005f9
 
-
 -->lpr -P PRINTER_NAME test
+```
