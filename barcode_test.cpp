@@ -12,12 +12,15 @@ int main(int argc, char *argv[])
   pcl.SetPos(320,120);
   pcl.SetFont(12, bold);
   pcl.Text("TITLE");
-  pcl.SetFont(12, regular);
+  //pcl.SetFont(12, regular);
 
+  //pcl.MoveH(-120);
+  //pcl.MoveV(80);
   pcl.SetPos(200,200);
-  pcl.Barcode39("1"); 
-
+  pcl.Barcode39("1");
+  
   pcl.EnablePrintBarcodeText();
+  //pcl.MoveH(200);
   pcl.SetPos(400,200);
   pcl.Barcode39("1");
 
