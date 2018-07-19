@@ -3,6 +3,12 @@ PCL barcode 3of9 code generation using C++
 
 
 * You may have to modify library path in the Makefile
+* The printer should be set as 'raw' type
+
+```
+lpadmin -p printer_name -E -v socket://printer_host:post -m raw
+```
+
 * See barcode_test.cpp. It prints TITLE and two barcodes that print "1", one without human readable text, and second with human readable text.
 
 ```
