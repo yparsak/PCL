@@ -129,6 +129,20 @@ void PCL::Pop() {
   Text(Esc("&f1S"));
 }
 
+void PCL::Image(string file_name) {
+  Text(RemoveResetCommands(ReadFile(file_name)));  
+}
+
+string PCL::RemoveResetCommands(string str) {
+  string reset_command = Esc("E");
+  int pos = str.find(reset_command);
+  while (pos > -1) {
+    str.erase(pos,2);
+    pos = str.find(reset_command);
+  }
+  return str;
+}
+
 string PCL::RemoveChar(string str, char c) {
   string result;
   for (size_t i = 0; i < str.size(); i++) {
@@ -222,25 +236,30 @@ void PCL::print_char(char chr) {
 
   if (print_barcode_text) {
     Pop();
-    // write human readable text
     MoveV(barcode_height + PCL_TEXT_MARGIN);
     Text(chr_str);
     Pop();
-    // move to the next char
-    MoveH((bar_width_bit_cnt+1) * PCL_WIDE_BAR * barcode_width_ratio);
+    // move to Next char
+    MoveH( (bar_width_bit_cnt+1) * PCL_WIDE_BAR * barcode_width_ratio);
   }
 
 }
 
 void   PCL::createFile(string name, string content) {
-  std::ofstream ptr(name.c_str());
+  ofstream ptr(name.c_str());
   ptr << content;
   ptr.close();
 }
 
+string  PCL::ReadFile(string file_name) {
+  ifstream ptr(file_name.c_str());
+  stringstream buffer;
+  buffer << ptr.rdbuf();
+  return buffer.str();
+}
+
 void  PCL::Barcode39(string value) {
 
-  //Remove * char, and append it as prefix and suffix
   value = "*" + RemoveChar(value,'*') + "*";
 
   // Vertical Center On

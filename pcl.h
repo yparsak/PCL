@@ -65,10 +65,12 @@ class PCL {
     void   DrawRectangle(float H, float V, int is_space);
     void   Push();
     void   Pop();
+    void   Image(string file_name);
+    string RemoveResetCommands(string str);
     string RemoveChar(string str, char c);
     void   dump_dimensions(char c);
     void   print_char(char c);
     void   createFile(string name, string content);
-
+    string ReadFile(string file_name);
     void   Barcode39(string value);
 };
