@@ -14,6 +14,12 @@ lpadmin -p printer_name -E -v socket://printer_host:port -m raw
 ```
 * Some scanners don't scan single character barcodes. If you are printing a single character barcode, you may have to re-program your scanner.
 
+* Use ImageMagick to convert files to pcl.
+
+```
+-->convert logo.jpg logo.pcl
+```
+
 ```
 -->make
 g++ -fPIC -c pcl.cpp -o pcl.o 
@@ -21,9 +27,13 @@ g++ -shared  -Wl,-soname,libpcl.so -o libpcl.so pcl.o
 cp libpcl.so /usr/lib/
 g++    -c -o barcode_test.o barcode_test.cpp
 g++ -o barcode_test  barcode_test.o -L. -lpcl 
+```
 
+```
 -->./barcode_test
+```
 
+```
 -->hexdump -C test
 hexdump -C test
 00000000  1b 45 1b 2a 70 33 32 30  58 1b 2a 70 31 32 30 59  |.E.*p320X.*p120Y|
@@ -37,8 +47,9 @@ hexdump -C test
 000005e0  2a 1b 26 66 31 53 1b 26  61 2b 38 38 48 1b 26 61  |*.&f1S.&a+88H.&a|
 000005f0  2b 31 38 37 2e 35 56 1b  45                       |+187.5V.E|
 000005f9
+```
 
+```
 -->lpr -P PRINTER_NAME test
 ```
 
-TODO: Write a new function that you can pass file path as a parameter. Use "convert" to convert image to pcl code. Then using this function read file contents as binary, remove Reset command '1b 45  |^E|' from the image file, and insert image data into the pcl code. This will allow printing images.
