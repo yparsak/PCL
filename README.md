@@ -51,6 +51,7 @@ hexdump -C test
 00004da0  2e 35 56 1b 45                                    |.5V.E|
 00004da5
 ```
+* Finaly you can print
 
 ```
 -->lpr -P PRINTER_NAME test
