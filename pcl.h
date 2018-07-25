@@ -51,6 +51,7 @@ class PCL {
     string Esc(string code);
     void   Text(string code);
     void   Reset();
+    void   EjectPage();
     void   XPos(int x);
     void   YPos(int y);
     void   SetPos(int x, int y);
