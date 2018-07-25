@@ -50,6 +50,10 @@ void   PCL::Reset() {
   Text(Esc("E"));
 }
 
+void PCL::EjectPage() {
+  Reset();
+}
+
 void  PCL::XPos(int x) {
   ostringstream Xpos;
   Xpos << x;
@@ -137,7 +141,7 @@ string PCL::RemoveResetCommands(string str) {
   string reset_command = Esc("E");
   int pos = str.find(reset_command);
   while (pos > -1) {
-    str.erase(pos,2);
+    str.erase(pos, reset_command.length());
     pos = str.find(reset_command);
   }
   return str;
