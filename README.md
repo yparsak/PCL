@@ -12,6 +12,8 @@ Notes:
 ```
 lpadmin -p printer_name -E -v socket://printer_host:port -m raw
 ```
+
+* If you turn on debug mode, it replaces Escape character (27) with character '^' to make it human readable. Remember to disable debug.
 * Some scanners don't scan single character barcodes. If you are printing a single character barcode, you may have to re-program your scanner. [39 Any Length](39_any_length.png)
 
 * Use ImageMagick to convert files to pcl.
@@ -32,6 +34,8 @@ g++ -o barcode_test  barcode_test.o -L. -lpcl
 ```
 -->./barcode_test
 ```
+
+* Use hexdump to see output contents
 
 ```
 -->hexdump -C test
