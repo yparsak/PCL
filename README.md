@@ -1,7 +1,7 @@
 # PCL
 PCL code generation using C++.
 
-Create a PCL code and print text, image and barcode 39. See example: barcode_test.cpp. It prints an image, text "TITLE", and two barcodes. The second barcode includes human redable text under the barcode.
+Create a PCL code and print text, image and barcode 39. See example: [barcode_test.cpp](barcode_test.cpp). It prints an image, text "TITLE", and two barcodes. The second barcode includes human redable text under the barcode.
 
 See: https://en.wikipedia.org/wiki/Code_39 for more info.
 
@@ -12,7 +12,7 @@ Notes:
 ```
 lpadmin -p printer_name -E -v socket://printer_host:port -m raw
 ```
-* Some scanners don't scan single character barcodes. If you are printing a single character barcode, you may have to re-program your scanner.
+* Some scanners don't scan single character barcodes. If you are printing a single character barcode, you may have to re-program your scanner. [39 Any Length](39_any_length.png)
 
 * Use ImageMagick to convert files to pcl.
 
